@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Colectii.Models.Comparable;
+using Colectii.Models.Comparable.interfaces;
 
 namespace Colectii.Models
 {
-    public class User : IComparable<User>
+    public class User: IComparable<User>
     {
 
         private int _id;
@@ -24,6 +26,20 @@ namespace Colectii.Models
         public string Name { get => _name; set => _name = value; }
         public int Age { get => _age; set => _age = value; }
 
+  /*      public int ComparableAgeTo<T>(User other)
+        {
+           if (Age > other.Age) return 1;
+            else if (Age == other.Age) return 0;
+            else return -1;
+        }
+
+        public int ComparableNameTo<T>(User other)
+        {
+
+            if (Name.Equals(other.Name)) return 1;
+            else return 0;
+        }
+*/
         public int CompareTo(User? other)
         {
             if (Age > other.Age) return 1;
@@ -31,13 +47,15 @@ namespace Colectii.Models
             else return -1;
         }
 
+       
+
         public string descriere()
         {
             string t = "";
 
-            t += $"Id: {Id}";
-            t += $"Name: {Name}";
-            t += $"Age: {Age}";
+            t += $"Id: {Id}\n";
+            t += $"Name: {Name}\n";
+            t += $"Age: {Age}\n";
 
             return t;
         }
